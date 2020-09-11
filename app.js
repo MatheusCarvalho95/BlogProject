@@ -22,12 +22,6 @@ const postSchema ={
 };
 const Post = mongoose.model("Post", postSchema);
 
-
-
-
-
-
-
 //Pre variables section
 
 const homeStartingContent = "This is a basic blog project, here i'm making a daily journal and i'm gonna post some updates on my projects";
