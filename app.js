@@ -6,6 +6,7 @@ const ejs = require("ejs");
 const _ = require("lodash");
 const mongoose = require('mongoose');
 
+
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -65,6 +66,36 @@ post.save(function(err){
     res.redirect("/");
   }
 });
+})
+//Functions to update and delete
+function editThePost(id,title,text){
+    Post.update(
+      {_id: id},
+      {title: title, content: text},
+      {overwrite: true},
+      function(err){
+        if(!err){return}else{console.log(err)};
+      }
+    )
+}
+function deleteThePost(id){
+  Post.deleteOne({_id:id}, function(err){ if(!err){return} else{console.log(err)}})
+}
+
+//Edit post
+app.post("/patch", function(req,res){
+  const editId = req.body.postId;
+  const editTitle = req.body.postTitle;
+  const editText = req.body.textContent;
+  editThePost(editId, editTitle,editText);
+  res.send("Updated the post")
+});
+;
+//Delete post
+app.post("/delete", function(req,res){
+  const deleteId = req.body.deleteId;
+  deleteThePost(deleteId)
+  res.send("Deleted the post")
 })
 
 //Listen section

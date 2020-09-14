@@ -9,4 +9,37 @@
 <button class="btn btn-primary" type="submit">Publish</button>
 </div>
 </form>
-<%- include("partials/footer") -%>
+<hr>
+<h1>Edit</h1>
+<form action="/patch" method="POST">
+    <div class="form-group">
+        <label for="postId">Post Id</label></br>
+        <input type="text" name="postId" class="form-control" required>
+        <label for="postTitle">Title</label>
+        <input type="text" class="form-control" name="postTitle" required></br>
+        <label for="postContent">Post</label></br>
+        <textarea class="form-control" name="textContent" id="" cols="200" rows="5" required></textarea></br>
+        <input type="hidden" name="_method" value="PATCH">
+        <button class="btn btn-primary" type="submit">Update post</button>
+    </div>
+</form>
+<hr>
+<h1>Delete a post</h1>
+<form action="/delete" method="POST">
+    <label for="deleteId">ID:</label></br>
+    <input type="text" name="deleteId" required class="form-control"></br>
+    <button class="btn btn-danger" type="submit">DELETE</button>
+</form>
+
+
+
+
+</div>
+<div class="footer-padding"></div>
+  <div class="footer-compose">
+    <p>Matheus Carvalho - 2020</p>
+  </div>
+</div>
+</body>
+</html>
+
